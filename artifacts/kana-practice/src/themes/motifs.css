@@ -1,0 +1,58 @@
+/* Theme motifs and session effects. All decorative layers are pointer-events: none. */
+.motif-wide { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 34vh; }
+.fuji-glow { position: absolute; inset: auto -10% 0 -10%; height: 70vh; background: radial-gradient(ellipse at 50% 100%, hsl(var(--sakura) / .7), transparent 65%); animation: breathe 14s ease-in-out infinite; }
+.konbini-stripes { position: absolute; left: 0; right: 0; bottom: 0; height: 9px; background: linear-gradient(hsl(148 70% 34%) 0 33%, hsl(28 92% 54%) 0 66%, hsl(214 75% 44%) 0); opacity: .7; }
+.shink-stripe { position: absolute; left: 0; right: 0; bottom: 22vh; height: 6px; background: hsl(var(--primary) / .35); box-shadow: 0 10px 0 -3px hsl(var(--primary) / .15); }
+.neon-sign text, .neon-sign rect { filter: drop-shadow(0 0 4px currentColor); }
+.neon-sign { opacity: .5; animation: shimmer 7s ease-in-out infinite; }
+.neon-alt { animation: shimmer 9s ease-in-out infinite reverse; }
+.ripple { transform-origin: 130px 110px; transform-box: view-box; animation: ripple 9s ease-out infinite; opacity: 0; }
+.leaf { position: absolute; top: -24px; animation: leaffall linear infinite; opacity: .8; }
+.steam { animation: steam 7s ease-in-out infinite; }
+.onsen-mist { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 110%, hsl(var(--foreground) / .07), transparent 60%), radial-gradient(ellipse at 90% 100%, hsl(var(--foreground) / .06), transparent 50%); animation: breathe 16s ease-in-out infinite; }
+.lamp-glow { position: absolute; top: -10vh; right: -10vw; width: 70vw; height: 70vh; background: radial-gradient(circle at 70% 30%, hsl(var(--primary) / .22), transparent 60%); animation: breathe 12s ease-in-out infinite; }
+.shooting-star { position: absolute; top: 12vh; left: 55vw; width: 140px; height: 2px; border-radius: 2px; opacity: 0;
+  background: linear-gradient(90deg, transparent, hsl(var(--foreground) / .9)); transform: rotate(-20deg); animation: shoot 2.2s ease-out 1 forwards; }
+
+@keyframes breathe { 50% { opacity: .6; } }
+@keyframes shimmer { 0%, 100% { opacity: .5; } 50% { opacity: .68; } }
+@keyframes ripple { 0% { transform: scale(.3); opacity: .7; } 100% { transform: scale(1.6); opacity: 0; } }
+@keyframes leaffall {
+  0% { transform: translate3d(0, -20px, 0) rotate(0) scale(var(--s, 1)); }
+  50% { transform: translate3d(-50px, 50vh, 0) rotate(160deg) scale(var(--s, 1)); }
+  100% { transform: translate3d(30px, 106vh, 0) rotate(320deg) scale(var(--s, 1)); }
+}
+@keyframes steam { 0% { transform: translateY(8px); opacity: 0; } 40% { opacity: 1; } 100% { transform: translateY(-14px); opacity: 0; } }
+@keyframes shoot { 0% { opacity: 0; transform: rotate(-20deg) translateX(0); } 15% { opacity: .9; } 100% { opacity: 0; transform: rotate(-20deg) translateX(-38vw); } }
+
+/* Washi: distinct fibrous paper */
+[data-theme='washi'] body::before { opacity: .55; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.32' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.22 0 0 0 0.16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"); }
+[data-theme='washi'][data-mode='dark'] body::before { opacity: .2; mix-blend-mode: screen; }
+[data-theme='neon-shinjuku'] body::before, [data-theme='midnight-ink'] body::before { opacity: .08; }
+
+/* Konbini receipt stat cards */
+[data-theme='konbini'] .stat-card { background: hsl(var(--card)) !important; color: hsl(var(--foreground)) !important; border: 1px solid hsl(var(--border)) !important; border-radius: 3px !important;
+  font-family: var(--app-font-mono); position: relative; padding-top: 1.1rem !important; padding-bottom: 1.4rem !important;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 12px 100%;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 12px 100%; }
+[data-theme='konbini'] .stat-card::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: linear-gradient(90deg, hsl(148 70% 34%) 0 33%, hsl(28 92% 54%) 0 66%, hsl(214 75% 44%) 0); }
+[data-theme='konbini'] .stat-card::after { content: '- - - - - - - - - - - -'; display: block; overflow: hidden; white-space: nowrap; font-size: 10px; opacity: .4; margin-top: .3rem; }
+[data-theme='konbini'] .stat-card * { opacity: 1; }
+
+/* Session effects */
+.hanko { position: absolute; top: 1.1rem; right: 1.1rem; width: 4.2rem; height: 4.2rem; border-radius: 50%; border: 3px solid hsl(var(--primary)); color: hsl(var(--primary));
+  display: grid; place-items: center; font-weight: 900; font-size: 1.15rem; line-height: 1; transform: rotate(-8deg);
+  background: radial-gradient(circle, hsl(var(--primary) / .1), transparent 70%); animation: hanko .5s cubic-bezier(.2,1.5,.4,1) both; }
+.hanko::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; border: 1px solid hsl(var(--primary) / .6); }
+@keyframes hanko { 0% { opacity: 0; transform: scale(1.8) rotate(-20deg); } 60% { opacity: 1; transform: scale(.92) rotate(-6deg); } 100% { transform: scale(1) rotate(-8deg); } }
+.koi-swim { position: fixed; left: 0; bottom: 12vh; z-index: -1; pointer-events: none; transform: translateX(70vw); opacity: .55; }
+.koi-swim.moving { animation: koiswim 9s ease-in-out 1 forwards; }
+@keyframes koiswim { 0% { transform: translateX(-200px); opacity: 0; } 10% { opacity: .85; } 90% { opacity: .85; } 100% { transform: translateX(110vw); opacity: .55; } }
+.koi-swim .tail { transform-origin: 30px 30px; transform-box: view-box; animation: tail .6s ease-in-out infinite alternate; }
+@keyframes tail { to { transform: rotate(14deg); } }
+.train-car { transition: transform .8s ease-out; }
+
+/* Reduced motion: user toggle OR system. Static motifs and results only. */
+[data-reduce-motion='true'] *, [data-reduce-motion='true'] *::before, [data-reduce-motion='true'] *::after { animation: none !important; transition: none !important; }
+[data-reduce-motion='true'] .motif-moving, [data-reduce-motion='true'] .shooting-star { display: none !important; }
+[data-reduce-motion='true'] .lift:hover, [data-reduce-motion='true'] .lift:active { transform: none; }

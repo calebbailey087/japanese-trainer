@@ -1,0 +1,53 @@
+Kana study data — sources and licenses
+
+KANJIDIC2 and JMdict
+Copyright: James William Breen and the Electronic Dictionary Research and
+Development Group (EDRDG). Dictionary extracts and adaptations in this app
+are distributed under Creative Commons Attribution-ShareAlike 4.0:
+https://creativecommons.org/licenses/by-sa/4.0/
+https://www.edrdg.org/edrdg/licence.html
+https://www.edrdg.org/wiki/index.php/KANJIDIC_Project
+https://www.edrdg.org/wiki/index.php/JMdict-EDICT_Dictionary_Project
+Documentation:
+https://www.edrdg.org/kanjidic/kanjd2index_legacy.html
+https://www.edrdg.org/jmdict/jmdict_dtd_h.html
+
+Changes: selected the 2,136 joyo characters, English meanings, 5,000 common
+vocabulary entries (news1/ichi1/spec1), compacted fields, normalized on-readings
+to hiragana, added starter/school-grade/frequency grouping and prerequisite/topic indexes.
+The legacy JLPT numbers in KANJIDIC2 are not modern JLPT N-level promises.
+Examples require priority on each written form and exclude rare/irregular/ateji/
+search-only written forms and readings. Reading and sense restrictions are
+respected, usually-kana-only senses are omitted from written examples, and
+written forms are deduplicated. Qualifying starter examples come first.
+Characters without a qualifying example remain reference-only.
+
+Tatoeba Project sentence pairs and transcriptions
+Creative Commons Attribution 2.0 France:
+https://creativecommons.org/licenses/by/2.0/fr/
+https://tatoeba.org/en/terms_of_use
+Pairs redistributed by ManyThings.org:
+https://www.manythings.org/anki/
+Source transcriptions:
+https://downloads.tatoeba.org/exports/per_language/jpn/jpn_transcriptions.tsv.bz2
+Each selected sentence retains original sentence IDs and contributor attribution.
+Changes: filtered to short pairs with complete loaded-dictionary word coverage
+and source kana transcriptions (or kana-only originals), converted source
+furigana markup to kana, added prerequisite indexes. Community translations
+and readings may contain errors; use source links to report them.
+
+No KanjiVG material or third-party audio recordings are included. Audio is
+provided by the device's Japanese speech-synthesis voice, if available.
+Base kana, starter words, survival phrases and starter order were user-supplied.
+Kana combinations use the WanaKana transliteration library (MIT).
+
+Update procedure (at least monthly before distributing a fresh dictionary):
+python3 scripts/import-japanese.py --refresh
+Run the app's tests/typecheck/build after updating. The generated manifest
+records import time, source URLs and SHA-256 hashes. Raw downloads are cached
+only in the ignored generated-artifacts directory.
+
+Original application code is MIT licensed. These data licenses apply to the
+respective data, including the generated JSON: MIT does not replace their
+attribution or dictionary share-alike obligations. EDRDG and Tatoeba do not
+endorse this application.
